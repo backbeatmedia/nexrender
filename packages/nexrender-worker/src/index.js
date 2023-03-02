@@ -60,7 +60,12 @@ const start = async (host, secret, settings, headers) => {
     if (typeof settings.tagSelector == 'string') {
         settings.tagSelector = settings.tagSelector.replace(/[^a-z0-9, ]/gi, '')
     }
-
+    // if there is no setting for how many empty queues to tolerate, make one from the
+    // environment variable, or the default (which is zero)
+    if (!(typeof settings.tolerateEmptyQueues == 'number')) {
+        settings.tolerateEmptyQueues = NEXRENDER_TOLERATE_EMPTY_QUEUES;
+    }
+    
     const client = createClient({ host, secret, headers });
 
     do {

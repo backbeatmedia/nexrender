@@ -20,8 +20,14 @@ const nextJob = async (client, settings) => {
             );
 
             if (job && job.uid) {
+                emptyReturns = 0;
                 return job
+            } else {
+                // no job was returned by the server. If enough checks have passed, and the exit option is set, deactivate the worker
+                emptyReturns++;
+                if (settings.exitOnEmptyQueue && emptyReturns > settings.tolerateEmptyQueues) active = false;
             }
+
         } catch (err) {
             if (settings.stopOnError) {
                 throw err;
@@ -32,7 +38,7 @@ const nextJob = async (client, settings) => {
             }
         }
 
-        await delay(settings.polling || NEXRENDER_API_POLLING)
+        if (active) await delay(settings.polling || NEXRENDER_API_POLLING)
     } while (active)
 }
 

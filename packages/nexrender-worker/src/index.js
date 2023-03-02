@@ -64,10 +64,13 @@ const start = async (host, secret, settings, headers) => {
     const client = createClient({ host, secret, headers });
 
     do {
-        let job = await nextJob(client, settings); {
-            job.state = 'started';
-            job.startedAt = new Date()
-        }
+        let job = await nextJob(client, settings);
+
+        // if the worker has been deactivated, exit this loop
+        if (!active) break;
+
+        job.state = 'started';
+        job.startedAt = new Date()
 
         try {
             await client.updateJob(job.uid, job)

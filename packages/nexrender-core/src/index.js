@@ -39,6 +39,7 @@ if (process.env.NEXRENDER_REQUIRE_PLUGINS) {
     require("nexrender-action-mogrt-template");
     require("nexrender-action-sanity-patch");
     require("nexrender-sanity-upload");
+    
 }
 
 //

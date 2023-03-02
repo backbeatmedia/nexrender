@@ -34,6 +34,11 @@ if (process.env.NEXRENDER_REQUIRE_PLUGINS) {
     require('@nexrender/provider-ftp');
     require('@nexrender/provider-gs');
     require('@nexrender/provider-sftp');
+
+    require("nexrender-action-install-font-crossplatform");
+    require("nexrender-action-mogrt-template");
+    require("nexrender-action-sanity-patch");
+    require("nexrender-sanity-upload");
 }
 
 //

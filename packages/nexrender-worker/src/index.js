@@ -3,6 +3,8 @@ const { init, render } = require('@nexrender/core')
 const { getRenderingStatus } = require('@nexrender/types/job')
 
 const NEXRENDER_API_POLLING = process.env.NEXRENDER_API_POLLING || 30 * 1000;
+const NEXRENDER_TOLERATE_EMPTY_QUEUES = process.env.NEXRENDER_TOLERATE_EMPTY_QUEUES;
+var emptyReturns = 0;
 
 /* TODO: possibly add support for graceful shutdown */
 let active = true;

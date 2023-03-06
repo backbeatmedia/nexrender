@@ -7,6 +7,7 @@
     "pkg-prelink": "node ../../misc/prelink.js"
   },
   "dependencies": {
+    "@nexrender/action-cache": "^1.42.0",
     "@nexrender/types": "^1.42.2",
     "data-uri-to-buffer": "^3.0.0",
     "file-uri-to-path": "^2.0.0",
@@ -15,12 +16,13 @@
     "match-all": "^1.2.5",
     "mime-types": "^2.1.29",
     "mkdirp": "^1.0.4",
-    "requireg": "^0.2.1",
-    "rimraf": "^3.0.2",
     "nexrender-action-install-font-crossplatform": "^1.0.2",
     "nexrender-action-mogrt-template": "^0.0.4",
     "nexrender-action-sanity-patch": "^1.0.0",
-    "nexrender-sanity-upload": "^1.0.4"
+    "nexrender-action-template-unzip": "^1.1.0",
+    "nexrender-sanity-upload": "^1.0.4",
+    "requireg": "^0.2.1",
+    "rimraf": "^3.0.2"
   },
   "peerDependencies": {
     "@nexrender/action-copy": "^1.0.0",

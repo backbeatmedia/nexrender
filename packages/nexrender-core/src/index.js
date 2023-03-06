@@ -29,16 +29,21 @@ if (process.env.NEXRENDER_REQUIRE_PLUGINS) {
     require('@nexrender/action-copy');
     require('@nexrender/action-encode');
     require('@nexrender/action-upload');
+    require('@nexrender/action-cache');
 
     require('@nexrender/provider-s3');
     require('@nexrender/provider-ftp');
     require('@nexrender/provider-gs');
     require('@nexrender/provider-sftp');
 
-    require("nexrender-action-install-font-crossplatform");
-    require("nexrender-action-mogrt-template");
-    require("nexrender-action-sanity-patch");
-    require("nexrender-sanity-upload");
+    require("nexrender-action-install-font-crossplatform"); //: "^1.0.2",
+    require("nexrender-action-mogrt-template"); //: "^0.0.4",
+    require("nexrender-action-sanity-patch"); //: "^1.0.0",
+    require("nexrender-action-template-unzip"); //: "^1.1.0",
+    require("nexrender-sanity-upload"); //: "^1.0.4",
+    
+
+
     
 }
 

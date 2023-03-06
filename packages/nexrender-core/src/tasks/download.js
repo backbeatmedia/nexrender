@@ -68,6 +68,8 @@ const download = (job, settings, asset) => {
         case 'https':
             // Use default cache path if `settings.cache` param is set to simply `true`
             // Otherwise use value directly (can be string to file path or undefined)
+            
+/* commented out to work around a bug
             const cachePath = settings.cache === true ?
                 path.join(settings.workpath, "http-cache") :
                 settings.cache;
@@ -77,6 +79,8 @@ const download = (job, settings, asset) => {
             asset.params.cachePath = Object.hasOwn(asset.params, 'cachePath') ?
                 asset.params.cachePath :
                 cachePath;
+*/
+
 
             /* TODO: maybe move to external package ?? */
             const src = decodeURI(asset.src) === asset.src ? encodeURI(asset.src): asset.src

@@ -15,12 +15,6 @@
     "match-all": "^1.2.5",
     "mime-types": "^2.1.29",
     "mkdirp": "^1.0.4",
-    "nexrender-action-install-font-crossplatform": "^1.0.2",
-    "nexrender-action-mogrt-template": "^0.0.4",
-    "nexrender-action-sanity-patch": "^1.0.0",
-    "nexrender-action-template-unzip": "^1.1.0",
-    "nexrender-comp-sequence": "^0.0.2",
-    "nexrender-sanity-upload": "^1.0.4",
     "requireg": "^0.2.1",
     "rimraf": "^3.0.2"
   },
@@ -33,6 +27,14 @@
     "@nexrender/provider-s3": "^1.21.4",
     "@nexrender/provider-sftp": "^1.37.9"
   },
+  "bundleDependencies": [
+    "nexrender-action-install-font-crossplatform",
+    "nexrender-action-mogrt-template",
+    "nexrender-action-sanity-patch",
+    "nexrender-action-template-unzip",
+    "nexrender-comp-sequence",
+    "nexrender-sanity-upload"
+],
   "publishConfig": {
     "access": "public"
   },

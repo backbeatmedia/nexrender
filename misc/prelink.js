@@ -11,4 +11,3 @@ Object.keys(pkg.peerDependencies).map(dep => {
         execSync(command)
     }
 })
-

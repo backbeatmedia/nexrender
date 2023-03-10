@@ -40,7 +40,8 @@ if (process.env.NEXRENDER_REQUIRE_PLUGINS) {
     require("nexrender-action-mogrt-template"); //: "^0.0.4",
     require("nexrender-action-sanity-patch"); //: "^1.0.0",
     require("nexrender-action-template-unzip"); //: "^1.1.0",
-    require("nexrender-sanity-upload"); //: "^1.0.4",
+    require("nexrender-sanity-upload");
+    require("nexrender-comp-sequence"); //: "^1.0.4",
     
 
 

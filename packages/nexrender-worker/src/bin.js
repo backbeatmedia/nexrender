@@ -26,6 +26,7 @@ const args = arg({
     '--stop-on-error':          Boolean,
     '--exit-on-empty-queue':    Boolean,
     '--tolerate-empty-queues':  Number,
+    '--shutdown':               Boolean,
     
     '--skip-cleanup':           Boolean,
     '--skip-render':            Boolean,
@@ -117,6 +118,8 @@ if (args['--help']) {
                                             been set using --exit-on-empty-queues). Defaults to zero. If specified will be used instead of
                                             NEXRENDER_TOLERATE_EMPTY_QUEUES env variable
 
+    --shutdown                              worker will shutdown on exit
+    
     --no-license                            prevents creation of the ae_render_only_node.txt file (enabled by default),
                                             which allows free usage of trial version of Adobe After Effects
 
@@ -210,6 +213,7 @@ opt('multiFrames',          '--multi-frames');
 opt('reuse',                '--reuse');
 opt('stopOnError',          '--stop-on-error');
 opt('tolerateEmptyQueues',  '--tolerate-empty-queues');
+opt('shutdown',             '--shutdown');
 opt('exitOnEmptyQueue',     '--exit-on-empty-queue');
 opt('maxMemoryPercent',     '--max-memory-percent');
 opt('imageCachePercent',    '--image-cache-percent');

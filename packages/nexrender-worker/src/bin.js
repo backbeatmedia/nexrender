@@ -263,4 +263,3 @@ if (args['--header']){
 
 start(serverHost, serverSecret, settings, headers);
 
-console.log('bin.js last line');

@@ -135,6 +135,12 @@ const start = async (host, secret, settings, headers) => {
             }
         }
     } while (active)
+    
+    if (settings.shutdown) {
+        
+        // shutdown code goes here
+        
+    }
 }
 
 module.exports = { start }

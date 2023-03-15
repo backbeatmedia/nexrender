@@ -1,6 +1,8 @@
 const { createClient } = require('@nexrender/api')
 const { init, render } = require('@nexrender/core')
 const { getRenderingStatus } = require('@nexrender/types/job')
+const { spawn } = require('child_process')
+const os = require('os');
 
 const NEXRENDER_API_POLLING = process.env.NEXRENDER_API_POLLING || 30 * 1000;
 const NEXRENDER_TOLERATE_EMPTY_QUEUES = process.env.NEXRENDER_TOLERATE_EMPTY_QUEUES || 0;
@@ -65,7 +67,7 @@ const start = async (host, secret, settings, headers) => {
     if (!(typeof settings.tolerateEmptyQueues == 'number')) {
         settings.tolerateEmptyQueues = NEXRENDER_TOLERATE_EMPTY_QUEUES;
     }
-    
+
     const client = createClient({ host, secret, headers });
 
     do {
@@ -79,7 +81,7 @@ const start = async (host, secret, settings, headers) => {
 
         try {
             await client.updateJob(job.uid, job)
-        } catch(err) {
+        } catch (err) {
             console.log(`[${job.uid}] error while updating job state to ${job.state}. Job abandoned.`)
             console.log(`[${job.uid}] error stack: ${err.stack}`)
             continue;
@@ -135,12 +137,23 @@ const start = async (host, secret, settings, headers) => {
             }
         }
     } while (active)
-    
+
     if (settings.shutdown) {
-        
-        // shutdown code goes here
-        
+
+        const platform = os.platform();
+
+        if (platform.toLowerCase().indexOf('darwin') !== -1) { // mac
+            spawn('shutdown', ['-h','now']);
+
+        } else if (platform.toLowerCase().indexOf('linux') !== -1) { // linux
+            spawn('shutdown', ['now']);
+
+        } else { // windows
+            spawn('shutdown', ['-s']);
+        }
+
     }
 }
 
 module.exports = { start }
+

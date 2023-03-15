@@ -118,7 +118,7 @@ if (args['--help']) {
                                             been set using --exit-on-empty-queues). Defaults to zero. If specified will be used instead of
                                             NEXRENDER_TOLERATE_EMPTY_QUEUES env variable
 
-    --shutdown                              worker will shutdown on exit
+    --shutdown                              worker will shutdown the host server on exit
     
     --no-license                            prevents creation of the ae_render_only_node.txt file (enabled by default),
                                             which allows free usage of trial version of Adobe After Effects

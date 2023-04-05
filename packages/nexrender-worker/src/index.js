@@ -138,20 +138,27 @@ const start = async (host, secret, settings, headers) => {
         }
     } while (active)
 
+    console.log(`settings = ${JSON.stringify(settings)}`);
+
     if (settings.shutdown) {
 
         const platform = os.platform();
 
         if (platform.toLowerCase().indexOf('darwin') !== -1) { // mac
+            console.log('mac shutdown');
             spawn('shutdown', ['-h','now']);
 
         } else if (platform.toLowerCase().indexOf('linux') !== -1) { // linux
+            console.log('linux shutdown');
             spawn('shutdown', ['now']);
 
         } else { // windows
+            console.log('windows shutdown');
             spawn('shutdown', ['-s']);
         }
 
+    } else {
+        console.log('no shutdown');
     }
 }
 

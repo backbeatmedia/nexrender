@@ -1,7 +1,7 @@
 const { createClient } = require('@nexrender/api')
 const { init, render } = require('@nexrender/core')
 const { getRenderingStatus } = require('@nexrender/types/job')
-// const { spawn } = require('child_process')
+const { spawn } = require('child_process')
 const os = require('os');
 
 const NEXRENDER_API_POLLING = process.env.NEXRENDER_API_POLLING || 30 * 1000;
@@ -56,13 +56,9 @@ const nextJob = async (client, settings) => {
  */
 const start = async (host, secret, settings, headers) => {
 
-    console.log(`index.js invoke settings = ${JSON.stringify(settings)}`);
-
     settings = init(Object.assign({}, settings, {
         logger: console,
     }))
-
-    console.log(`index.js after parse/push settings = ${JSON.stringify(settings)}`);
 
     if (typeof settings.tagSelector == 'string') {
         settings.tagSelector = settings.tagSelector.replace(/[^a-z0-9, ]/gi, '')
@@ -143,23 +139,21 @@ const start = async (host, secret, settings, headers) => {
         }
     } while (active)
 
-    console.log(`index.js end of run settings = ${JSON.stringify(settings)}`);
-
     if (settings.shutdown) {
 
         const platform = os.platform();
 
         if (platform.toLowerCase().indexOf('darwin') !== -1) { // mac
-            console.log('mac shutdown');
-            // spawn('shutdown', ['-h','now']);
+            // console.log('mac shutdown');
+            spawn('shutdown', ['-h','now']);
 
         } else if (platform.toLowerCase().indexOf('linux') !== -1) { // linux
-            console.log('linux shutdown');
-            // spawn('shutdown', ['now']);
+            // console.log('linux shutdown');
+            spawn('shutdown', ['now']);
 
         } else { // windows
-            console.log('windows shutdown');
-            // spawn('shutdown', ['-s']);
+            // console.log('windows shutdown');
+            spawn('shutdown', ['-s']);
         }
 
     } else {

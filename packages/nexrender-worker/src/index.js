@@ -156,8 +156,6 @@ const start = async (host, secret, settings, headers) => {
             spawn('shutdown', ['-s']);
         }
 
-    } else {
-        console.log('no shutdown');
     }
 }
 

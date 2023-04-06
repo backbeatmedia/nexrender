@@ -261,5 +261,7 @@ if (args['--header']){
     });
 }
 
+console.log(`bin.js end of run settings = ${JSON.stringify(settings)}`);
+
 start(serverHost, serverSecret, settings, headers);
 
